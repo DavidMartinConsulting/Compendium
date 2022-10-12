@@ -1,0 +1,2 @@
+protocol,subj_id,age,sex,case_report,study_med,treatment_indication,Date_of_first_dose,Date_of_last_dose,init_diag_date,karnofsky,IMDC,Sacomatoid,nephrectomy,radiation,medical_history,ae,ae_desc1,ae_desc2
+12341,1,58,male,314234,Ibup,No,4/15/2022,5/19/2022,12/3/2015,123,Intermediate,Yes,No,Radiation of some sort,Patient had s,Yes,Something,something_else
