@@ -1,48 +1,16 @@
 ### David Martin Consulting
 
-This a repository holding deliverables/tutorials.
+This site contains a series of hacks and advice that can be used to work more efficiently in R to create useful output.
 
 <nav aria-label="deliverables">
-  <b>Current Deliverables </b>
+  <b>Compendium of Hacks </b>
   <ul>
-    <li><a href="deliverables.html">PDF Comments, PPT Survival, Narrative Tables</a></li> 
+    <li><a href="1_narrative_tables.html">1.	Creating Narrative Tables with Flextables</a></li> 
+    <li><a href="2_ppt.html">2.	Creating PPT Presentations in R</a></li> 
+    <li><a href="3_child_parent.html">3.	Using the Child/Parent Style in R Markdown</a></li> 
+    <li><a href="4_forest_plot.html">4.	Creating a Generalized Forest Plot</a></li> 
+    <li><a href="5_pdf_comments.html">5.	Creating/Managing Comments in PDFs through R</a></li> 
+    <li><a href="6_table_package_comparisons.html">6.	Comparison of R Table Packages</a></li> 
+    <li><a href="7_other_lessons.html">7.	Other Lessons Learned</a></li> 
   </ul>
 </nav> 
-
-
-<nav aria-label="GitHub">
-  <b>Using GitHub</b>
-  <ul>
-    <li><a href="GitHub_Packages.html">Efficiently Utlizing Packages from GitHub</a></li> 
-    <li><a href="GitHub_Usage.html">Using GitHub at the Office (Empty)</a></li> 
-  </ul>
-</nav> 
-
- <nav aria-label="Reproducibility">
-<b>Comparing RENV, Checkpoint, and Docker</b>
-  <ul>
-    <li><a href="RENV.html">Using RENV</a></li> 
-    <li><a href="Checkpoint.html">Using Checkpoint</a></li> 
-    <li><a href="">Using Docker (Empty)</a></li> 
-    <li><a href="">Comparisons (Empty) </a></li> 
-   </ul></nav>
-   
-<nav aria-label="Octopus">
-<b>Octopus</b>
-  <ul>
-    <li><a href="Octopus.html">Overview of OCTOPUS (In progress)</a></li> 
-    <li><a href="">OCTOPUS Flowchart (Empty)</a></li> 
-    <li><a href="SimulationReport.html">Single ISA with Binary Endpoint Example (Partial)</a></li> 
-    <li><a href="">Other Examples (Empty)</a></li> 
-  </ul></nav>
-
-  <nav aria-label="Other">
-<b>Other</b>
-  <ul>
-<li><a href="Event_Prediction.html">Comparing Event Prediction Packages</a></li> 
-<li><a href="testthat.html">TestThat - Unit Testing </a></li> 
-<li><a href="assertr.html">assertR</a></li> 
-  </ul></nav>
-<!--<li><a href="pred_analytics.html">Pred Analytics</a></li> -->
-<!--<li><a href="/pred_analytics.html?rawue">Pred Analytics</a></li> -->
-
