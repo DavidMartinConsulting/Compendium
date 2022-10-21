@@ -1,0 +1,76 @@
+---
+title: "Using the parent/child relationship in Markdown"
+output: rmdformats::readthedown
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+#install.packages("flair")
+library(flair)
+```
+
+# Purpose of This Section
+
+The purpose of this section is to explore how you can use a parent/child type relationship within R Markdown to produce many documents and plots from a single markdown file. I will show a method of producing a single knitted document that contains the results of running a markdown file and I will show a method to produce multiple documents that contain results across many observations.
+
+# Parent/Child Overview
+
+In general, I find that a single R Markdown file quickly becomes unwieldy. I recommend breaking the document up into multiple “child” documents and sourcing these child documents in a parent document. My child documents generally represent major subsections of the document.
+
+I prefer to store the parent R Markdown file in a folder labeled “markdown” (rproject/markdown) and the child R Markdown files in a sub-directory of my “markdown” folder called “sections” (rproject/markdown/sections). In the parent file, the child files are sourced within the code chunk header using child = ‘sections/example.Rmd’. After sourcing all the child chunks, the parent file can be knit (compiled) like a normal R markdown document. The child documents cannot be run in the parent file.
+
+## Creating a Powerpoint from Markdown
+
+Inside the parent document
+
+```{r}
+library(knitr)
+library(tidyverse)
+library(survival)
+library(survminer)
+```
+
+```{r}
+lung <- lung %>% mutate(
+  age_group = case_when(
+    age <= 55 ~ "LT 55",
+    age > 55 & age <= 70 ~ "Between 55 & 70", 
+    age > 70 ~ "GT 70"))
+vars <- c("time", "status", "sex", "age_group", "ph.ecog", "ph.karno", "pat.karno")
+lung <- lung %>% select(all_of(vars))
+
+var_names <- c("time", "status","Sex", "Age Group", "ECOG Performance", "Phys. Kanofsky", "Patient Karnofsky")
+```
+
+
+```{r}
+
+#Replace temp_var with variable name from list-
+rmd <- sapply(
+  3:7,
+  function(x) {
+    knit_expand("3_ppt_child.Rmd", x = x)
+  }
+)
+
+rmd <- paste(rmd, collapse = "\n")
+cat(rmd)
+```
+
+```{r results = "asis"}
+rendered <- knit(text = rmd, quiet = TRUE)
+cat(rendered, sep = "\n")
+```
+
+
+In this document I am knitting to an HTML to be able to show the code, etc. However, in your document you would knit to a ppt. You can do this by using the dropdown arrow next to the knit button and choosing ppt. Also, in the YAML (the header), you can include the following:
+
+```{r}
+# output:
+#   powerpoint_presentation:
+#     slide_level: 1
+#     reference_doc: template1.potx
+```
+Using this format you can knit to a powerpoint and also provide a specific style so that the powerpoint is not simply a blank powerpoint. 

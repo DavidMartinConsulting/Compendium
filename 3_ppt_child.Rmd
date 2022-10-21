@@ -1,0 +1,26 @@
+\newpage
+
+# `r paste0("Survival Analysis stratified by ", var_names[{{x}}])`
+
+```{r, echo = FALSE}
+# Creates a temporary variable to loop through
+temp_var <- unlist(lung[{{x}}])
+
+fit <- survfit(Surv(time, status) ~ temp_var, data = lung)
+names(fit$strata) <- str_replace(names(fit$strata), "temp_var", var_names[{{x}}])
+# Plots the survival analysis
+gg_norisk <- ggsurvplot(fit, risk.table = TRUE)
+# Sets up the png file to hold on to the graph temporarily
+norisk_png <- tempfile("norisk", fileext = ".png")
+
+# This builds a plot that can be saved as norisk_png
+norisk_png |>
+  ggsave(
+    plot = survminer:::.build_ggsurvplot(gg_norisk), width = 10, height = 10
+  )
+
+# Prints out the png file
+knitr::include_graphics(norisk_png)
+```
+
+\newpage

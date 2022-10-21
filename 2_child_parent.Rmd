@@ -1,0 +1,91 @@
+---
+title: "Using the parent/child relationship in Markdown"
+output: rmdformats::readthedown
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+#install.packages("flair")
+library(flair)
+library(knitr)
+library(tidyverse)
+```
+
+# Purpose of This Section
+
+The purpose of this section is to explore how you can use a parent/child type relationship within R Markdown to produce many documents and plots from a single markdown file. I will show a method of producing a single knitted document that contains the results of running a markdown file and I will show a method to produce multiple documents that contain results across many observations.
+
+# Parent/Child Overview
+
+Oftentimes when creating a markdown file, you may want to separate out different sections of your code. Generally, you start with a parent file that initiates the initial objects and sets things up and then you can call on any child files that do the heavy lifting. In our example we are only going to be calling one child file, however, you can use multiple "children" that all do a different portion of the analysis. This is helpful for keeping code organized and less unwieldy. For example, if you are creating a full report in Markdown, the parent document would read in the data and load the libraries while the children will all represent different aspects of the report (Introduction, Background, Results, Discussion, etc.). Having all of these sections in one single file would become quite cumbersome.
+
+Another key reason to use the parent/child format is to run the child program multiple times. Without setting up a parent/child relationship it becomes difficult to programmatically and efficiently run a program many times. This document will show you how to do this using two different methods.
+
+# Saving in one document
+
+Inside the parent document.
+
+```{r, include=FALSE}
+df <- data.frame(matrix(ncol = 4, nrow = 5))
+colnames(df) <- c("column1", "column2", "column3", "column4")
+df$column1 <- rnorm(5, 5, 1)
+df$column2 <- rnorm(5, 5, 1)
+df$column3 <- rnorm(5, 5, 1)
+df$column4 <- rnorm(5, 5, 1)
+df$column5 <- rnorm(5, 5, 1)
+
+ rmd <- sapply(
+   1:5,
+   function(x) {
+     knitr::knit_expand("example_child.Rmd", x = x)
+   }
+ )
+ 
+ rmd <- paste(rmd, collapse = "\n")
+ cat(rmd)
+```
+
+```{r results = "asis",echo=FALSE}
+ rendered <- knitr::knit(text = rmd, quiet = TRUE)
+ cat(rendered, sep = "\n")
+```
+
+Inside the child document
+
+![](child_1.png){width="261"}
+
+Note that the in order to use the x variable, you use the double curly brackets...
+
+"\\newpage" works well when working on ppt or pdf docs.
+
+## Creating multiple documents
+
+This section will explore how to use one markdown document to create several pieces of output.
+
+Inside the parent document
+
+```{r}
+  for (x in 1:5){
+  rmarkdown::render("example_child_2.Rmd", 
+                   output_format = "word_document",
+                   output_file = paste0("test", x,".docx"),
+                   params = list(
+    x = x))
+  }
+```
+
+Inside the child document
+
+```{r}
+# ---
+# output: word_document
+# params:
+#  x: null
+# ---
+
+### `r paste0(names(df)[{{x}}])`
+
+#paste0("This is run number", {{x}})
+```
