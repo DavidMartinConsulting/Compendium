@@ -13,6 +13,13 @@ library(knitr)
 library(tidyverse)
 ```
 
+# Files
+
+[Materials](child_parent_example.zip?raw=true)
+
+Download Materials to practice on your own. Download, unzip, click on "Click_Here_to_Start.Rproj" and then inside of RStudio click on "child_parent_example.Rmd"
+
+
 # Purpose of This Section
 
 The purpose of this section is to explore how you can use a parent/child type relationship within R Markdown to produce many documents and plots from a single markdown file. I will show a method of producing a single knitted document that contains the results of running a markdown file and I will show a method to produce multiple documents that contain results across many observations.
@@ -27,7 +34,7 @@ Another key reason to use the parent/child format is to run the child program mu
 
 Inside the parent document.
 
-```{r, include=FALSE}
+```{r}
 df <- data.frame(matrix(ncol = 4, nrow = 5))
 colnames(df) <- c("column1", "column2", "column3", "column4")
 df$column1 <- rnorm(5, 5, 1)
@@ -47,7 +54,7 @@ df$column5 <- rnorm(5, 5, 1)
  cat(rmd)
 ```
 
-```{r results = "asis",echo=FALSE}
+```{r results = "asis"}
  rendered <- knitr::knit(text = rmd, quiet = TRUE)
  cat(rendered, sep = "\n")
 ```
