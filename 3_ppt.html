@@ -7,7 +7,7 @@
 
     
     
-    <title>Using the parent/child relationship in Markdown</title>
+    <title>Creating a Powerpoint Document in R</title>
 
         <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1271,17 +1271,15 @@ src: url(data:application/font-sfnt;base64,AAEAAAARAQAABAAQR0RFRgs+Cz8AAjwQAAAAQ
          
    
         
-      <h1 class="title">Using the parent/child relationship in
-Markdown</h1>
+      <h1 class="title">Creating a Powerpoint Document in R</h1>
       
          <!-- readthedown authors -->
    <div id="sidebar">
-    <h2><a href="#content">Using the parent/child relationship in
-Markdown</a></h2>
+    <h2><a href="#content">Creating a Powerpoint Document in R</a></h2>
     <div id="toc">
       <ul>
-      <li><a href="#purpose-of-this-section" id="toc-purpose-of-this-section">Purpose of This Section</a></li>
-      <li><a href="#parentchild-overview" id="toc-parentchild-overview">Parent/Child Overview</a>
+      <li><a href="#files" id="toc-files">Files</a></li>
+      <li><a href="#purpose-of-this-section" id="toc-purpose-of-this-section">Purpose of This Section</a>
       <ul>
       <li><a href="#creating-a-powerpoint-from-markdown" id="toc-creating-a-powerpoint-from-markdown">Creating a Powerpoint
       from Markdown</a></li>
@@ -1308,37 +1306,34 @@ Markdown</a></h2>
    
 <!-- Don't indent these lines or it will mess pre blocks indentation --> 
 <div id="main">
+<div id="files" class="section level1">
+<h1>Files</h1>
+<p><a href="ppt_example.zip?raw=true">Materials</a></p>
+<p>Download Materials to practice on your own. Download, unzip, click on
+“Click_Here_to_Start.Rproj” and then inside of RStudio click on
+“ppt_parent_example.Rmd”</p>
+</div>
 <div id="purpose-of-this-section" class="section level1">
 <h1>Purpose of This Section</h1>
 <p>The purpose of this section is to explore how you can use a
-parent/child type relationship within R Markdown to produce many
-documents and plots from a single markdown file. I will show a method of
-producing a single knitted document that contains the results of running
-a markdown file and I will show a method to produce multiple documents
-that contain results across many observations.</p>
-</div>
-<div id="parentchild-overview" class="section level1">
-<h1>Parent/Child Overview</h1>
-<p>In general, I find that a single R Markdown file quickly becomes
-unwieldy. I recommend breaking the document up into multiple “child”
-documents and sourcing these child documents in a parent document. My
-child documents generally represent major subsections of the
-document.</p>
-<p>I prefer to store the parent R Markdown file in a folder labeled
-“markdown” (rproject/markdown) and the child R Markdown files in a
-sub-directory of my “markdown” folder called “sections”
-(rproject/markdown/sections). In the parent file, the child files are
-sourced within the code chunk header using child =
-‘sections/example.Rmd’. After sourcing all the child chunks, the parent
-file can be knit (compiled) like a normal R markdown document. The child
-documents cannot be run in the parent file.</p>
+parent/child type relationship within R Markdown to produce a sequence
+of plots in a powerpoint file. This builds off of the previous example
+looking at the child/parent relationship. This example will show how you
+can create a powerpoint document with complex graphs that will iterate
+over several different columns. This example can be quite a bit more
+complicated, but that will be saved for a future example.</p>
 <div id="creating-a-powerpoint-from-markdown" class="section level2">
 <h2>Creating a Powerpoint from Markdown</h2>
-<p>Inside the parent document</p>
+<p>Inside the parent document we must first load in the following
+libraries.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survminer)</span></code></pre></div>
+<p>Here I am simply reading in a new dataset from the
+<code>survival</code> package. I am working through and simply modifying
+the variables to be more useful in a survival analysis/regression
+example.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lung <span class="ot">&lt;-</span> lung <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">age_group =</span> <span class="fu">case_when</span>(</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    age <span class="sc">&lt;=</span> <span class="dv">55</span> <span class="sc">~</span> <span class="st">&quot;LT 55&quot;</span>,</span>
@@ -1348,16 +1343,18 @@ documents cannot be run in the parent file.</p>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>lung <span class="ot">&lt;-</span> lung <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">all_of</span>(vars))</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>var_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;time&quot;</span>, <span class="st">&quot;status&quot;</span>,<span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age Group&quot;</span>, <span class="st">&quot;ECOG Performance&quot;</span>, <span class="st">&quot;Phys. Kanofsky&quot;</span>, <span class="st">&quot;Patient Karnofsky&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Replace temp_var with variable name from list-</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>rmd <span class="ot">&lt;-</span> <span class="fu">sapply</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(x) {</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">knit_expand</span>(<span class="st">&quot;3_ppt_child.Rmd&quot;</span>, <span class="at">x =</span> x)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>rmd <span class="ot">&lt;-</span> <span class="fu">paste</span>(rmd, <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(rmd)</span></code></pre></div>
+<p>This example is just like the example we created in the child/parent
+tutorial. Here we are going to iterate over the 3rd through 7th columns
+and saving the code that is used in the child document.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rmd <span class="ot">&lt;-</span> <span class="fu">sapply</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(x) {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">knit_expand</span>(<span class="st">&quot;3_ppt_child.Rmd&quot;</span>, <span class="at">x =</span> x)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>rmd <span class="ot">&lt;-</span> <span class="fu">paste</span>(rmd, <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(rmd)</span></code></pre></div>
 <pre><code>## \newpage
 ## 
 ## # `r paste0(&quot;Survival Analysis stratified by &quot;, var_names[3])`

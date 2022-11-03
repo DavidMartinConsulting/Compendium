@@ -1,5 +1,5 @@
 ---
-title: "Using the parent/child relationship in Markdown"
+title: "Creating a Powerpoint Document in R"
 output: rmdformats::readthedown
 ---
 
@@ -11,19 +11,19 @@ knitr::opts_chunk$set(warning = FALSE)
 library(flair)
 ```
 
+# Files
+
+[Materials](ppt_example.zip?raw=true)
+
+Download Materials to practice on your own. Download, unzip, click on "Click_Here_to_Start.Rproj" and then inside of RStudio click on "ppt_parent_example.Rmd"
+
 # Purpose of This Section
 
-The purpose of this section is to explore how you can use a parent/child type relationship within R Markdown to produce many documents and plots from a single markdown file. I will show a method of producing a single knitted document that contains the results of running a markdown file and I will show a method to produce multiple documents that contain results across many observations.
-
-# Parent/Child Overview
-
-In general, I find that a single R Markdown file quickly becomes unwieldy. I recommend breaking the document up into multiple “child” documents and sourcing these child documents in a parent document. My child documents generally represent major subsections of the document.
-
-I prefer to store the parent R Markdown file in a folder labeled “markdown” (rproject/markdown) and the child R Markdown files in a sub-directory of my “markdown” folder called “sections” (rproject/markdown/sections). In the parent file, the child files are sourced within the code chunk header using child = ‘sections/example.Rmd’. After sourcing all the child chunks, the parent file can be knit (compiled) like a normal R markdown document. The child documents cannot be run in the parent file.
+The purpose of this section is to explore how you can use a parent/child type relationship within R Markdown to produce a sequence of plots in a powerpoint file. This builds off of the previous example looking at the child/parent relationship. This example will show how you can create a powerpoint document with complex graphs that will iterate over several different columns. This example can be quite a bit more complicated, but that will be saved for a future example.
 
 ## Creating a Powerpoint from Markdown
 
-Inside the parent document
+Inside the parent document we must first load in the following libraries. 
 
 ```{r}
 library(knitr)
@@ -31,6 +31,9 @@ library(tidyverse)
 library(survival)
 library(survminer)
 ```
+
+Here I am simply reading in a new dataset from the `survival` package. I am working through and simply modifying the variables to be more useful in a survival analysis/regression example.
+
 
 ```{r}
 lung <- lung %>% mutate(
@@ -43,11 +46,10 @@ lung <- lung %>% select(all_of(vars))
 
 var_names <- c("time", "status","Sex", "Age Group", "ECOG Performance", "Phys. Kanofsky", "Patient Karnofsky")
 ```
+This example is just like the example we created in the child/parent tutorial. Here we are going to iterate over the 3rd through 7th columns and saving the code that is used in the child document.
 
 
 ```{r}
-
-#Replace temp_var with variable name from list-
 rmd <- sapply(
   3:7,
   function(x) {
