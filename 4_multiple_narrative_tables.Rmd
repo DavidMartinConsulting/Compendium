@@ -1,0 +1,62 @@
+---
+title: "Creating Multiple Narrative Tables"
+output: rmdformats::readthedown
+---
+
+```{=html}
+<style type="text/css">
+
+body{font-size: 12px;}
+td {font-size: 8px;}
+h1.title {font-size: 38px; color: DarkRed;}
+</style>
+```
+
+# Files
+
+[Materials](multi_narrative_example.zip?raw=true)
+
+Download Materials to practice on your own. Download, unzip, click on "Click_Here_to_Start.Rproj" and then inside of RStudio click on "parent_narrative_tables.Rmd"
+
+## Loading in libraries
+The main libraries here are flextable and ftExtra, which provide
+the various ways to create our interlocking tables
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(results = "hide")
+
+```
+
+# Purpose of This Section
+
+The purpose of this section is to explore how you can use a parent/child type relationship within R Markdown to produce a sequence of narrative tables, one for each subject that you are looking at. Our first tutorial explored how to create a narrative table. This tutorial will expand upon that and will show how we can make a few small changes to create a programmatic way of iterating through subjects to create many narrative tables.
+
+## Creating a Powerpoint from Markdown
+
+Inside the parent document we must first load in the following libraries. 
+
+```{r, echo = FALSE, message = FALSE}
+library(knitr)
+library(tidyverse)
+library(ggpubr)
+library(cowplot)
+library(officer)
+library(flextable)
+library(ftExtra)
+```
+
+We are now going to combine the narrative table and parent/child tutorials into one step. Here we are going to loop over our dataset and grab one row (subject) at a time. Doing this, we will be able to create a new word document for each subject.
+
+```{r chunk_setup, echo = TRUE}
+# use params to pass on parameter
+# need to have params set in child
+for (i in 1:nrow(read_csv("https://raw.githubusercontent.com/DavidMartinConsulting/Compendium/gh-pages/sample.csv"))) {
+rmarkdown::render("small_narrative_tables.Rmd", 
+                 output_format = "word_document",
+                 output_file = paste0("subject_", i,".docx"),
+                 params = list(
+  x = i))}
+```
