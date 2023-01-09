@@ -5,7 +5,7 @@ This site contains a series of hacks and advice that can be used to work more ef
 <nav aria-label="deliverables">
   <b>Prerequisites</b>
   <ul> 
-    <li><a href="creating_projects.html"> Creating a Project in RStudio</a></li>
+    <li><a href="creating_projects.html">1. Creating a Project in RStudio</a></li>
   </ul>
   <b>Compendium of Hacks </b>
   <ul>
