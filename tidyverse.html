@@ -1295,6 +1295,8 @@ margin-left: 0 !important;
    
 <!-- Don't indent these lines or it will mess pre blocks indentation --> 
 <div id="main">
+<p><a href="https://davidmartinconsulting.github.io/Compendium/Using_the_Tidyverse.zip">Download
+Tidyverse Tutorial Files</a></p>
 <div id="tidyverse-overview" class="section level1">
 <h1>Tidyverse Overview</h1>
 <p>The <code>tidyverse</code> is a family of packages that share a
@@ -2327,18 +2329,18 @@ only going to compare Asia, the Americas, and Europe.</p>
 <span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>gm <span class="sc">%&gt;%</span> </span>
 <span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">25</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 25 × 6
-##    country             continent  year lifeExp      pop gdpPercap
-##    &lt;fct&gt;               &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
-##  1 Hong Kong, China    Asia       1982    75.4  5264500    14561.
-##  2 Austria             Europe     1987    74.9  7578903    23688.
-##  3 Colombia            Americas   1957    55.1 14485993     2324.
-##  4 Venezuela           Americas   1957    57.9  6702668     9802.
-##  5 Trinidad and Tobago Americas   1997    69.5  1138101     8793.
-##  6 Switzerland         Europe     1962    71.3  5666000    20431.
-##  7 Germany             Europe     1987    74.8 77718298    24639.
-##  8 France              Europe     1997    78.6 58623428    25890.
-##  9 Saudi Arabia        Asia       1972    53.9  6472756    24837.
-## 10 Belgium             Europe     1962    70.2  9218400    10991.
+##    country            continent  year lifeExp       pop gdpPercap
+##    &lt;fct&gt;              &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;
+##  1 Germany            Europe     1952    67.5  69145952     7144.
+##  2 Portugal           Europe     2002    77.3  10433867    19971.
+##  3 Greece             Europe     1952    65.9   7733250     3531.
+##  4 Slovak Republic    Europe     1982    70.8   5048043    11349.
+##  5 Philippines        Asia       1982    62.1  53456774     2603.
+##  6 Colombia           Americas   1952    50.6  12350771     2144.
+##  7 China              Asia       1952    44   556263527      400.
+##  8 Singapore          Asia       1957    63.2   1445929     2843.
+##  9 Bahrain            Asia       1957    53.8    138655    11636.
+## 10 Dominican Republic Americas   1952    45.9   2491346     1398.
 ## # … with 15 more rows</code></pre>
 <p>To create a connected line graph you simply need to add the
 <code>geom_line</code> following the <code>geom_point</code>. However,
@@ -2973,75 +2975,75 @@ package and will select only those variables that are a factor.</p>
 <span id="cb175-5"><a href="#cb175-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">50</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb175-6"><a href="#cb175-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(replace_As)</span></code></pre></div>
 <pre><code>## $country
-##  [1] &quot;Nepreplacedl&quot;                            
-##  [2] &quot;Greplacedbon&quot;                            
-##  [3] &quot;Brreplacedzil&quot;                           
-##  [4] &quot;Czech Republic&quot;                          
-##  [5] &quot;Preplacedrreplacedgureplacedy&quot;           
-##  [6] &quot;Morocco&quot;                                 
-##  [7] &quot;Frreplacednce&quot;                           
-##  [8] &quot;Denmreplacedrk&quot;                          
-##  [9] &quot;Yemen, Rep.&quot;                             
-## [10] &quot;Ugreplacedndreplaced&quot;                    
-## [11] &quot;Irreplacedq&quot;                             
-## [12] &quot;Mreplacedlreplacedysireplaced&quot;           
-## [13] &quot;Indonesireplaced&quot;                        
-## [14] &quot;Nreplacedmibireplaced&quot;                   
-## [15] &quot;Polreplacednd&quot;                           
-## [16] &quot;Cubreplaced&quot;                             
-## [17] &quot;Kuwreplacedit&quot;                           
-## [18] &quot;Creplacednreplaceddreplaced&quot;             
-## [19] &quot;Myreplacednmreplacedr&quot;                   
-## [20] &quot;Breplacedhrreplacedin&quot;                   
-## [21] &quot;Korereplaced, Rep.&quot;                      
-## [22] &quot;Irelreplacednd&quot;                          
-## [23] &quot;Icelreplacednd&quot;                          
-## [24] &quot;replacedlbreplacednireplaced&quot;            
-## [25] &quot;Swreplacedzilreplacednd&quot;                 
-## [26] &quot;Treplacediwreplacedn&quot;                    
-## [27] &quot;Kuwreplacedit&quot;                           
-## [28] &quot;Trinidreplacedd replacednd Tobreplacedgo&quot;
-## [29] &quot;Creplacedmbodireplaced&quot;                  
-## [30] &quot;Benin&quot;                                   
-## [31] &quot;Hondurreplaceds&quot;                         
-## [32] &quot;Mreplaceddreplacedgreplacedscreplacedr&quot;  
-## [33] &quot;Swreplacedzilreplacednd&quot;                 
-## [34] &quot;Finlreplacednd&quot;                          
-## [35] &quot;replacedustrreplacedlireplaced&quot;          
-## [36] &quot;United Streplacedtes&quot;                    
-## [37] &quot;Nepreplacedl&quot;                            
-## [38] &quot;Lesotho&quot;                                 
-## [39] &quot;Niger&quot;                                   
-## [40] &quot;Montenegro&quot;                              
-## [41] &quot;Frreplacednce&quot;                           
-## [42] &quot;Belgium&quot;                                 
-## [43] &quot;Polreplacednd&quot;                           
-## [44] &quot;Irreplacedq&quot;                             
-## [45] &quot;Mozreplacedmbique&quot;                       
-## [46] &quot;Sweden&quot;                                  
-## [47] &quot;Somreplacedlireplaced&quot;                   
-## [48] &quot;Burkinreplaced Freplacedso&quot;              
-## [49] &quot;Lesotho&quot;                                 
-## [50] &quot;replacedfghreplacednistreplacedn&quot;        
+##  [1] &quot;Chile&quot;                                      
+##  [2] &quot;Threplacedilreplacednd&quot;                     
+##  [3] &quot;Chile&quot;                                      
+##  [4] &quot;Hondurreplaceds&quot;                            
+##  [5] &quot;Benin&quot;                                      
+##  [6] &quot;Guinereplaced&quot;                              
+##  [7] &quot;replacedustrreplacedlireplaced&quot;             
+##  [8] &quot;Hondurreplaceds&quot;                            
+##  [9] &quot;Bolivireplaced&quot;                             
+## [10] &quot;Bosnireplaced replacednd Herzegovinreplaced&quot;
+## [11] &quot;Eritrereplaced&quot;                             
+## [12] &quot;replacedlgerireplaced&quot;                      
+## [13] &quot;Bulgreplacedrireplaced&quot;                     
+## [14] &quot;South replacedfricreplaced&quot;                 
+## [15] &quot;Senegreplacedl&quot;                             
+## [16] &quot;Creplacednreplaceddreplaced&quot;                
+## [17] &quot;Ugreplacedndreplaced&quot;                       
+## [18] &quot;Mreplacedli&quot;                                
+## [19] &quot;El Sreplacedlvreplaceddor&quot;                  
+## [20] &quot;Turkey&quot;                                     
+## [21] &quot;Sreplacedo Tome replacednd Principe&quot;        
+## [22] &quot;Peru&quot;                                       
+## [23] &quot;Mongolireplaced&quot;                            
+## [24] &quot;replacedngolreplaced&quot;                       
+## [25] &quot;replacedfghreplacednistreplacedn&quot;           
+## [26] &quot;Mozreplacedmbique&quot;                          
+## [27] &quot;Sri Lreplacednkreplaced&quot;                    
+## [28] &quot;Preplacedrreplacedgureplacedy&quot;              
+## [29] &quot;Nreplacedmibireplaced&quot;                      
+## [30] &quot;Mozreplacedmbique&quot;                          
+## [31] &quot;Nicreplacedrreplacedgureplaced&quot;             
+## [32] &quot;Preplacednreplacedmreplaced&quot;                
+## [33] &quot;Myreplacednmreplacedr&quot;                      
+## [34] &quot;Togo&quot;                                       
+## [35] &quot;Korereplaced, Rep.&quot;                         
+## [36] &quot;Urugureplacedy&quot;                             
+## [37] &quot;Mozreplacedmbique&quot;                          
+## [38] &quot;Chinreplaced&quot;                               
+## [39] &quot;Jreplacedmreplacedicreplaced&quot;               
+## [40] &quot;replacedustrireplaced&quot;                      
+## [41] &quot;Equreplacedtorireplacedl Guinereplaced&quot;     
+## [42] &quot;Mreplaceduritreplacednireplaced&quot;            
+## [43] &quot;United Streplacedtes&quot;                       
+## [44] &quot;Myreplacednmreplacedr&quot;                      
+## [45] &quot;Denmreplacedrk&quot;                             
+## [46] &quot;Mreplaceduritius&quot;                           
+## [47] &quot;Preplacednreplacedmreplaced&quot;                
+## [48] &quot;Libyreplaced&quot;                               
+## [49] &quot;replacedrgentinreplaced&quot;                    
+## [50] &quot;Sri Lreplacednkreplaced&quot;                    
 ## 
 ## $continent
-##  [1] &quot;replacedsireplaced&quot;     &quot;replacedfricreplaced&quot;   &quot;replacedmericreplaceds&quot;
-##  [4] &quot;Europe&quot;                 &quot;replacedmericreplaceds&quot; &quot;replacedfricreplaced&quot;  
-##  [7] &quot;Europe&quot;                 &quot;Europe&quot;                 &quot;replacedsireplaced&quot;    
-## [10] &quot;replacedfricreplaced&quot;   &quot;replacedsireplaced&quot;     &quot;replacedsireplaced&quot;    
-## [13] &quot;replacedsireplaced&quot;     &quot;replacedfricreplaced&quot;   &quot;Europe&quot;                
-## [16] &quot;replacedmericreplaceds&quot; &quot;replacedsireplaced&quot;     &quot;replacedmericreplaceds&quot;
-## [19] &quot;replacedsireplaced&quot;     &quot;replacedsireplaced&quot;     &quot;replacedsireplaced&quot;    
-## [22] &quot;Europe&quot;                 &quot;Europe&quot;                 &quot;Europe&quot;                
-## [25] &quot;replacedfricreplaced&quot;   &quot;replacedsireplaced&quot;     &quot;replacedsireplaced&quot;    
-## [28] &quot;replacedmericreplaceds&quot; &quot;replacedsireplaced&quot;     &quot;replacedfricreplaced&quot;  
-## [31] &quot;replacedmericreplaceds&quot; &quot;replacedfricreplaced&quot;   &quot;replacedfricreplaced&quot;  
-## [34] &quot;Europe&quot;                 &quot;Ocereplacednireplaced&quot;  &quot;replacedmericreplaceds&quot;
-## [37] &quot;replacedsireplaced&quot;     &quot;replacedfricreplaced&quot;   &quot;replacedfricreplaced&quot;  
-## [40] &quot;Europe&quot;                 &quot;Europe&quot;                 &quot;Europe&quot;                
-## [43] &quot;Europe&quot;                 &quot;replacedsireplaced&quot;     &quot;replacedfricreplaced&quot;  
-## [46] &quot;Europe&quot;                 &quot;replacedfricreplaced&quot;   &quot;replacedfricreplaced&quot;  
-## [49] &quot;replacedfricreplaced&quot;   &quot;replacedsireplaced&quot;</code></pre>
+##  [1] &quot;replacedmericreplaceds&quot; &quot;replacedsireplaced&quot;     &quot;replacedmericreplaceds&quot;
+##  [4] &quot;replacedmericreplaceds&quot; &quot;replacedfricreplaced&quot;   &quot;replacedfricreplaced&quot;  
+##  [7] &quot;Ocereplacednireplaced&quot;  &quot;replacedmericreplaceds&quot; &quot;replacedmericreplaceds&quot;
+## [10] &quot;Europe&quot;                 &quot;replacedfricreplaced&quot;   &quot;replacedfricreplaced&quot;  
+## [13] &quot;Europe&quot;                 &quot;replacedfricreplaced&quot;   &quot;replacedfricreplaced&quot;  
+## [16] &quot;replacedmericreplaceds&quot; &quot;replacedfricreplaced&quot;   &quot;replacedfricreplaced&quot;  
+## [19] &quot;replacedmericreplaceds&quot; &quot;Europe&quot;                 &quot;replacedfricreplaced&quot;  
+## [22] &quot;replacedmericreplaceds&quot; &quot;replacedsireplaced&quot;     &quot;replacedfricreplaced&quot;  
+## [25] &quot;replacedsireplaced&quot;     &quot;replacedfricreplaced&quot;   &quot;replacedsireplaced&quot;    
+## [28] &quot;replacedmericreplaceds&quot; &quot;replacedfricreplaced&quot;   &quot;replacedfricreplaced&quot;  
+## [31] &quot;replacedmericreplaceds&quot; &quot;replacedmericreplaceds&quot; &quot;replacedsireplaced&quot;    
+## [34] &quot;replacedfricreplaced&quot;   &quot;replacedsireplaced&quot;     &quot;replacedmericreplaceds&quot;
+## [37] &quot;replacedfricreplaced&quot;   &quot;replacedsireplaced&quot;     &quot;replacedmericreplaceds&quot;
+## [40] &quot;Europe&quot;                 &quot;replacedfricreplaced&quot;   &quot;replacedfricreplaced&quot;  
+## [43] &quot;replacedmericreplaceds&quot; &quot;replacedsireplaced&quot;     &quot;Europe&quot;                
+## [46] &quot;replacedfricreplaced&quot;   &quot;replacedmericreplaceds&quot; &quot;replacedfricreplaced&quot;  
+## [49] &quot;replacedmericreplaceds&quot; &quot;replacedsireplaced&quot;</code></pre>
 <p>The <code>modify_if</code> function will do something similar and
 will only use the <code>replace_As</code> function on a factor
 variable.</p>
@@ -3049,19 +3051,19 @@ variable.</p>
 <span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">50</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb177-3"><a href="#cb177-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_if</span>(is.factor, replace_As)</span></code></pre></div>
 <pre><code>## # A tibble: 50 × 6
-##    country                continent               year lifeExp      pop gdpPer…¹
-##    &lt;chr&gt;                  &lt;chr&gt;                  &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;    &lt;dbl&gt;
-##  1 Senegreplacedl         replacedfricreplaced    1967    43.6  3965841    1612.
-##  2 Denmreplacedrk         Europe                  1997    76.1  5283663   29804.
-##  3 Switzerlreplacednd     Europe                  1987    77.4  6649942   30282.
-##  4 Serbireplaced          Europe                  2002    73.2 10111559    7236.
-##  5 Venezuelreplaced       replacedmericreplaceds  1987    70.2 17910182    9884.
-##  6 Zreplacedmbireplaced   replacedfricreplaced    2007    42.4 11746035    1271.
-##  7 Botswreplacednreplaced replacedfricreplaced    1992    62.7  1342614    7954.
-##  8 Spreplacedin           Europe                  1977    74.4 36439000   13237.
-##  9 Ugreplacedndreplaced   replacedfricreplaced    1952    40.0  5824797     735.
-## 10 Breplacedhrreplacedin  replacedsireplaced      1952    50.9   120447    9867.
-## # … with 40 more rows, and abbreviated variable name ¹​gdpPercap</code></pre>
+##    country                                  conti…¹  year lifeExp    pop gdpPe…²
+##    &lt;chr&gt;                                    &lt;chr&gt;   &lt;int&gt;   &lt;dbl&gt;  &lt;int&gt;   &lt;dbl&gt;
+##  1 Sweden                                   Europe   1952    71.9 7.12e6   8528.
+##  2 Peru                                     replac…  1992    66.5 2.24e7   4446.
+##  3 West Breplacednk replacednd Greplacedzr… replac…  1952    43.2 1.03e6   1516.
+##  4 Myreplacednmreplacedr                    replac…  1992    59.3 4.05e7    347 
+##  5 Dominicreplacedn Republic                replac…  1977    61.8 5.30e6   2682.
+##  6 Senegreplacedl                           replac…  2007    63.1 1.23e7   1712.
+##  7 Hreplacediti                             replac…  1972    48.0 4.70e6   1654.
+##  8 Creplacedmeroon                          replac…  1967    44.8 6.34e6   1508.
+##  9 Liberireplaced                           replac…  1997    42.2 2.20e6    609.
+## 10 Portugreplacedl                          Europe   1972    69.3 8.97e6   9022.
+## # … with 40 more rows, and abbreviated variable names ¹​continent, ²​gdpPercap</code></pre>
 <p>The next option I want to show is the use of <code>purrr</code> to be
 able to read and write many files.</p>
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split by variable</span></span>
@@ -3088,20 +3090,7 @@ function that will provide a series of csv file names to the
 <span id="cb181-3"><a href="#cb181-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map_df</span>(read_csv)</span>
 <span id="cb181-4"><a href="#cb181-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb181-5"><a href="#cb181-5" aria-hidden="true" tabindex="-1"></a>gm_new</span></code></pre></div>
-<pre><code>## # A tibble: 1,704 × 6
-##    country     continent  year lifeExp      pop gdpPercap
-##    &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-##  1 Afghanistan Asia       1952    28.8  8425333      779.
-##  2 Albania     Europe     1952    55.2  1282697     1601.
-##  3 Algeria     Africa     1952    43.1  9279525     2449.
-##  4 Angola      Africa     1952    30.0  4232095     3521.
-##  5 Argentina   Americas   1952    62.5 17876956     5911.
-##  6 Australia   Oceania    1952    69.1  8691212    10040.
-##  7 Austria     Europe     1952    66.8  6927772     6137.
-##  8 Bahrain     Asia       1952    50.9   120447     9867.
-##  9 Bangladesh  Asia       1952    37.5 46886859      684.
-## 10 Belgium     Europe     1952    68    8730405     8343.
-## # … with 1,694 more rows</code></pre>
+<pre><code>## # A tibble: 0 × 0</code></pre>
 <p>Below is a more advanced example of how you can use a function from
 <code>purrr</code> called the <code>walk</code> function. Below, we are
 creating a function that creates a graph and allows you to iterate over
