@@ -5,6 +5,10 @@ This site contains a series of hacks and advice that can be used to work more ef
 <nav aria-label="deliverables">
   <b>Prerequisites</b>
   <ul> 
+    <li><a href="downloadable_resources.html">Downloadable Resources</a></li>
+  </ul>
+  <b>Prerequisites</b>
+  <ul> 
     <li><a href="creating_projects.html">1. Creating a Project in RStudio</a></li>
     <li><a href="RMarkdown.html">2. Using RMarkdown</a></li>
     <li><a href="tidyverse.html">3. Using the Tidyverse</a></li>
