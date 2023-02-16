@@ -1,0 +1,21 @@
+---
+title: "Downloadable Resources"
+output: rmdformats::readthedown
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+# Resources
+[Using the Tidyverse Materials](Using_the_Tidyverse.zip?raw=true)
+
+[1. Creating Narrative Tables with Flextable  Materials](Narrative_Table_Example.zip?raw=true)
+
+[2. Using the Child/Parent Style in R Markdown Materials](child_parent_Example.zip?raw=true)
+
+[3. Creating PPT Presentations in R Materials](ppt_Example.zip?raw=true)
+
+[4. Creating Multiple Narrative Tables Materials](multi_narrative_example.zip?raw=true)
