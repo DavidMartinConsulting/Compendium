@@ -3,7 +3,7 @@
 This site contains a series of hacks and advice that can be used to work more efficiently in R to create useful output.
 
 <nav aria-label="deliverables">
-  <b>Prerequisites</b>
+  <b>Compendium Materials</b>
   <ul> 
     <li><a href="downloadable_resources.html">Downloadable Resources</a></li>
   </ul>
